@@ -1,0 +1,8 @@
+Inmueble: direccion,fecha de compra e importe->modelo tren
+
+Año:año alquiler y meses->modelo vagones
+
+Mes:importe detalle gastos e ingresos->modelo asientos
+
+
+
