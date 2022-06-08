@@ -1,4 +1,4 @@
-package com.jgr.inmuebles.entity;
+package com.jgr.inmuebles.models.entity;
 
 import java.util.Set;
 
@@ -13,8 +13,12 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,6 +31,9 @@ import lombok.extern.slf4j.Slf4j;
 @Entity
 @Table(name = "anioinmuebles")
 public class AnioInmueble {
+	
+	//@Transient
+	//private static final Logger LOGGER = LoggerFactory.getLogger(AnioInmueble.class);
 		
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -79,8 +86,5 @@ public class AnioInmueble {
 	private Set <DetalleMesInmueble> detallemesinmueble;
 	
 	
-	
-
-
 	
 }

@@ -1,7 +1,6 @@
-package com.jgr.inmuebles.entity;
+package com.jgr.inmuebles.models.entity;
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -18,9 +17,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
@@ -33,6 +35,8 @@ import lombok.extern.slf4j.Slf4j;
 @Entity
 @Table(name = "inmuebles")
 public class Inmueble {
+	//@Transient
+	//private static final Logger LOGGER = LoggerFactory.getLogger(Inmueble.class);
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
