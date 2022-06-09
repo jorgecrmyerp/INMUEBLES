@@ -10,7 +10,7 @@ public interface IinmuebleService {
 	//como iterables es una interfaz es mas generico
 	public Iterable<Inmueble> findAll();	
 	
-	public Optional<Inmueble> findById(Long id);
+	public Inmueble findById(Long id);
 
 	public Inmueble save(Inmueble inmueble);
 	

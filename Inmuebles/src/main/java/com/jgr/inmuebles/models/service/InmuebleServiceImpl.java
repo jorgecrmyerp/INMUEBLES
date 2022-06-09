@@ -23,8 +23,8 @@ public class InmuebleServiceImpl implements IinmuebleService{
 
 	@Override
 	@Transactional(readOnly=true)
-	public Optional<Inmueble> findById(Long id) {
-		return inmueblesRepository.findById(id);
+	public Inmueble findById(Long id) {
+		return inmueblesRepository.findById(id).orElse(null);
 	}
 
 	@Override

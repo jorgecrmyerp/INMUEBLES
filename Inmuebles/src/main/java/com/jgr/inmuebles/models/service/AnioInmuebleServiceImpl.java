@@ -20,8 +20,8 @@ public class AnioInmuebleServiceImpl implements IAnioInmuebleService {
 	}
 
 	@Override
-	public Optional<AnioInmueble> findById(Long id) {
-		return iAnioInmuebleRepository.findById(id);
+	public AnioInmueble findById(Long id) {
+		return iAnioInmuebleRepository.findById(id).orElse(null);
 	}
 
 	@Override

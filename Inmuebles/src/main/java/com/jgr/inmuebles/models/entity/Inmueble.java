@@ -10,28 +10,18 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
-@Data
-@NoArgsConstructor
-@Slf4j
+
+
 @Entity
 @Table(name = "inmuebles")
 public class Inmueble {
@@ -57,13 +47,83 @@ public class Inmueble {
 	private double importecomprainmueble;
 	
 	//1inmueble-nanios
-	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "inmueble", fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "inmueble", fetch = FetchType.EAGER)
 	private Set <AnioInmueble> anioinmueble;
 
-	@ManyToMany
-	@JoinTable(name = "rel_inmueble_detallemes", joinColumns = @JoinColumn(name = "inmueble_id"), inverseJoinColumns = @JoinColumn(name = "detallemesinmueble_id"))
+	
+	@OneToMany(mappedBy="inmueble",cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
 	private Set<DetalleMesInmueble> inmuebledetallemes;
+
+
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+
+	public Date getFechacomprainmueble() {
+		return fechacomprainmueble;
+	}
+
+
+	public void setFechacomprainmueble(Date fechacomprainmueble) {
+		this.fechacomprainmueble = fechacomprainmueble;
+	}
+
+
+	public double getImportecomprainmueble() {
+		return importecomprainmueble;
+	}
+
+
+	public void setImportecomprainmueble(double importecomprainmueble) {
+		this.importecomprainmueble = importecomprainmueble;
+	}
+
+
+	public Set<AnioInmueble> getAnioinmueble() {
+		return anioinmueble;
+	}
+
+
+	public void setAnioinmueble(Set<AnioInmueble> anioinmueble) {
+		this.anioinmueble = anioinmueble;
+	}
+
+
+	public Set<DetalleMesInmueble> getInmuebledetallemes() {
+		return inmuebledetallemes;
+	}
+
+
+	public void setInmuebledetallemes(Set<DetalleMesInmueble> inmuebledetallemes) {
+		this.inmuebledetallemes = inmuebledetallemes;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Inmueble [id=" + id + ", direccion=" + direccion + ", fechacomprainmueble=" + fechacomprainmueble
+				+ ", importecomprainmueble=" + importecomprainmueble + "]";
+	}
+
+
 	
 	
+
 	
 }

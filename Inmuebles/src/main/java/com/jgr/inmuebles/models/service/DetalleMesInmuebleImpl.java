@@ -22,8 +22,8 @@ public class DetalleMesInmuebleImpl implements IDetalleMesInmuebleService {
 	}
 
 	@Override
-	public Optional<DetalleMesInmueble> findById(Long id) {
-		return detalleMesInmuebleRepository.findById(id);
+	public DetalleMesInmueble findById(Long id) {
+		return detalleMesInmuebleRepository.findById(id).orElse(null);
 	}
 
 	@Override
