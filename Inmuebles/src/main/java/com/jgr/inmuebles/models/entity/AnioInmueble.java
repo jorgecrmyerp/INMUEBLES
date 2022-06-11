@@ -1,5 +1,6 @@
 package com.jgr.inmuebles.models.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -32,19 +33,19 @@ public class AnioInmueble {
 	private Long id;
 	
 	@Column(name = "anio")
-	@NotEmpty
+	//@NotEmpty
 	private String anio;
 	
 	@Column(name = "mes")
-	@NotEmpty
+//	@NotEmpty
 	private String mes;
 	
 	@Column(name = "importeSeguroVivienda")
-	@NotNull
+	//@NotNull
 	private double importeSeguroVivienda;
 	
 	@Column(name = "importeSeguroImpago")
-	@NotNull	
+	//@NotNull	
 	private double importeSeguroImpago;
 	
 	@Lob
@@ -57,7 +58,7 @@ public class AnioInmueble {
 	
 	
 	@Column(name = "datosAdicionales")
-	@NotEmpty	
+	//@NotEmpty	
 	private String datosAdicionales;
 	
 	@Lob
@@ -65,7 +66,7 @@ public class AnioInmueble {
 	private String docdatosAdicionales;
 	
 	@Column(name = "num_meses")
-	@NotNull	
+	//@NotNull	
 	private int num_meses;
 	
 	
@@ -172,6 +173,12 @@ public class AnioInmueble {
 
 	public void setDetallemesinmueble(Set<DetalleMesInmueble> detallemesinmueble) {
 		this.detallemesinmueble = detallemesinmueble;
+	}
+	
+	public void setaddDetallemesinmueble(DetalleMesInmueble detallemesinmueble) {
+		
+		if(this.detallemesinmueble==null) {this.detallemesinmueble = new HashSet<DetalleMesInmueble>();}
+		this.detallemesinmueble.add(detallemesinmueble);
 	}
 
 	@Override

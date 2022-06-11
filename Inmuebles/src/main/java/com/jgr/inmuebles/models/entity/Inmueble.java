@@ -103,15 +103,25 @@ public class Inmueble {
 	public void setAnioinmueble(Set<AnioInmueble> anioinmueble) {
 		this.anioinmueble = anioinmueble;
 	}
-
+	
+	public void setaddAnioinmueble(AnioInmueble anioinmueble) {
+		this.anioinmueble.add(anioinmueble);
+		
+	}
+	
 
 	public Set<DetalleMesInmueble> getInmuebledetallemes() {
 		return inmuebledetallemes;
 	}
-
+	
+	
 
 	public void setInmuebledetallemes(Set<DetalleMesInmueble> inmuebledetallemes) {
 		this.inmuebledetallemes = inmuebledetallemes;
+	}
+
+	public void setaddInmuebledetallemes(DetalleMesInmueble inmuebledetallemes) {
+		this.inmuebledetallemes.add(inmuebledetallemes);
 	}
 
 

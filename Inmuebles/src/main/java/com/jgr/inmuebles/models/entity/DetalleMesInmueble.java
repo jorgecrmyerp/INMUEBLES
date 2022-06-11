@@ -34,12 +34,12 @@ public class DetalleMesInmueble {
 	private String mes;
 	
 	@Column(name = "importeAlquiler")
-	@NotNull
+	//@NotNull
 	private double importeAlquiler;
 	
 	
 	@Column(name = "importeComunidad")
-	@NotNull
+	//@NotNull
 	private double importeComunidad;
 	
 	@Lob
@@ -48,7 +48,7 @@ public class DetalleMesInmueble {
 		
 	
 	@Column(name = "importeIbi")
-	@NotNull
+	//@NotNull
 	private double importeIbi;
 	
 	@Lob
@@ -57,7 +57,7 @@ public class DetalleMesInmueble {
 		
 		
 	@Column(name = "gastosAdicionales")
-	@NotNull	
+	//@NotNull	
 	private double gastosAdicionales;
 	
 	@Column(name = "detallegastosadicionales")
