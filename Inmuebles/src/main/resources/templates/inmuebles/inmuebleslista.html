@@ -39,6 +39,9 @@
 					<th scope="col">Direccion</th>
 					<th scope="col">Fecha de Compra</th>
 					<th scope="col">Importe</th>
+					<th scope="col">Editar</th>
+					<th scope="col">Años</th>
+					<th scope="col">Rentabilidad</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -47,7 +50,24 @@
 					<td th:text="${inmueble.direccion}"></td>
 					<td th:text="${inmueble.fechacomprainmueble}"></td>
 					<td th:text="${inmueble.importecomprainmueble}"></td>
-					
+					<td>
+					<form th:action="@{'prevModif/'+ ${inmueble.id}}" >
+					<input type="submit" value="  Editar "
+						class="btn btn btn-sm btn-primary" style="margin: 10px" />
+					</form>
+					</td>
+					<td>
+					<form th:action="@{'prevModif/'+ ${inmueble.id}}" >
+					<input type="submit" value="  Años "
+						class="btn btn btn-sm btn-primary" style="margin: 10px" />
+					</form>
+					</td>
+					<td>
+					<form th:action="@{'prevModif/'+ ${inmueble.id}}" >
+					<input type="submit" value="  Rentabilidad "
+						class="btn btn btn-sm btn-primary" style="margin: 10px" />
+					</form>
+					</td>
 				</tr>				
 			</tbody>
 		</table>
