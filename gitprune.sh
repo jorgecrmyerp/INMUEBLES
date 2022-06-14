@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date) 2022-06-14 ESQUEMA BBDD CON DATOS"
+message="$(date) 2022-06-14 paginas html comunes y lista inmuebles"
 fi
 
 start=`date +%s`

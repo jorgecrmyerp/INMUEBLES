@@ -1,11 +1,18 @@
 package com.jgr.inmuebles.models.repository;
 
-import org.springframework.data.repository.CrudRepository;
+
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import org.springframework.stereotype.Repository;
 
 import com.jgr.inmuebles.models.entity.Inmueble;
 
-public interface IInmuebleRepository extends CrudRepository<Inmueble,Long>{
-	
+
+@Repository
+public interface IInmuebleRepository extends JpaRepository<Inmueble,Long>{
+
+
 	
 
 }

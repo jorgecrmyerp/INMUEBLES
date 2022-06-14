@@ -3,6 +3,8 @@ package com.jgr.inmuebles.models.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,6 +40,11 @@ public class InmuebleServiceImpl implements IinmuebleService{
 	public void deleteById(Long id) {
 		inmueblesRepository.deleteById(id);
 		
+	}
+
+	@Override
+	public Page<Inmueble> findAllPeliculas(Pageable pageable) {
+		return inmueblesRepository.findAll(pageable);
 	}
 
 }
