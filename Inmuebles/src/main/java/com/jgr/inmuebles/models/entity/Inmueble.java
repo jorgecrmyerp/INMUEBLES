@@ -2,6 +2,7 @@ package com.jgr.inmuebles.models.entity;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -49,15 +50,11 @@ public class Inmueble {
 	
 	//1inmueble-nanios
 	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "inmueble", fetch = FetchType.LAZY)
-	private Set <AnioInmueble> anioInmueble;
-
-	
-	@OneToMany(mappedBy="inmueble",cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
-	private Set<DetalleMesInmueble> inmuebleDetalleMes;
+	private Set <AnioInmueble> anios;
 
 	public Inmueble() {
-		anioInmueble = new HashSet<>();
-		inmuebleDetalleMes = new HashSet<>();
+		anios = new HashSet<>();
+		
 	}
 
 
@@ -66,9 +63,11 @@ public class Inmueble {
 	}
 
 
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 
 
 	public String getDireccion() {
@@ -76,9 +75,11 @@ public class Inmueble {
 	}
 
 
+
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
+
 
 
 	public Date getFechacomprainmueble() {
@@ -86,9 +87,11 @@ public class Inmueble {
 	}
 
 
+
 	public void setFechacomprainmueble(Date fechacomprainmueble) {
 		this.fechacomprainmueble = fechacomprainmueble;
 	}
+
 
 
 	public double getImportecomprainmueble() {
@@ -96,49 +99,48 @@ public class Inmueble {
 	}
 
 
+
 	public void setImportecomprainmueble(double importecomprainmueble) {
 		this.importecomprainmueble = importecomprainmueble;
 	}
 
-
-	public Set<AnioInmueble> getAnioinmueble() {
-		return anioInmueble;
+	public Set<AnioInmueble> getAnios() {
+		return anios;
 	}
 
 
-	public void setAnioinmueble(Set<AnioInmueble> anioinmueble) {
-		this.anioInmueble = anioinmueble;
+	public void setAnios(Set<AnioInmueble> anios) {
+		this.anios.clear();
+		anios.forEach(this::addAnio);
+		
 	}
-	
-	public void setaddAnioinmueble(AnioInmueble anioinmueble) {
-		this.anioInmueble.add(anioinmueble);
-	}
-	
 
-
-	public Set<DetalleMesInmueble> getInmuebledetallemes() {
-		return inmuebleDetalleMes;
+	public void addAnio(AnioInmueble anio) {
+		this.anios.add(anio);
+		anio.setInmueble(this);
+		
 	}
 	
-	
-	public void setInmuebledetallemes(Set<DetalleMesInmueble> inmuebledetallemes) {
-		this.inmuebleDetalleMes = inmuebledetallemes;
+	public void removeAnio(AnioInmueble anio) {
+		this.anios.remove(anio);		
+		
 	}
 
-	public void addInmuebledetallemes(DetalleMesInmueble inmuebledetallemes) {
-		this.inmuebleDetalleMes.add(inmuebledetallemes);
-	}
 
 
 	@Override
-	public String toString() {
-		return "Inmueble [id=" + id + ", direccion=" + direccion + ", fechacomprainmueble=" + fechacomprainmueble
-				+ ", importecomprainmueble=" + importecomprainmueble + "]";
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof Inmueble)) {
+			return false;
+		}
+		Inmueble other = (Inmueble) obj;
+		return this.id!=null && this.id.equals(other.getId());
 	}
-
-
 	
 	
-
+	
 	
 }

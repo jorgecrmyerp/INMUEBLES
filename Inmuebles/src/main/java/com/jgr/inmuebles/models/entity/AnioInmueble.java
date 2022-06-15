@@ -21,7 +21,6 @@ import javax.validation.constraints.NotNull;
 
 
 
-
 @Entity
 @Table(name = "anioinmuebles")
 public class AnioInmueble {
@@ -37,9 +36,10 @@ public class AnioInmueble {
 	//@NotEmpty
 	private String anio;
 	
-	@Column(name = "mes")
+	@Column(name = "contrato")
+	@Lob
 //	@NotEmpty
-	private String mes;
+	private String contrato;
 	
 	@Column(name = "importeSeguroVivienda")
 	//@NotNull
@@ -78,11 +78,11 @@ public class AnioInmueble {
 	
 	//relacion con detallemes
 	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "anioinmueble", fetch = FetchType.LAZY)
-	private Set <DetalleMesInmueble> detallemesinmueble;
+	private Set <DetalleMesInmueble> detallesmes;
 
 		
 	public AnioInmueble() {
-		this.detallemesinmueble = new HashSet<>();
+		this.detallesmes = new HashSet<>();
 	}
 
 	public Long getId() {
@@ -101,12 +101,12 @@ public class AnioInmueble {
 		this.anio = anio;
 	}
 
-	public String getMes() {
-		return mes;
+	public String getContrato() {
+		return contrato;
 	}
 
-	public void setMes(String mes) {
-		this.mes = mes;
+	public void setContrato(String contrato) {
+		this.contrato = contrato;
 	}
 
 	public double getImporteSeguroVivienda() {
@@ -174,26 +174,43 @@ public class AnioInmueble {
 	}
 
 	public Set<DetalleMesInmueble> getDetallemesinmueble() {
-		return detallemesinmueble;
+		return detallesmes;
 	}
 
-	public void setDetallemesinmueble(Set<DetalleMesInmueble> detallemesinmueble) {
-		this.detallemesinmueble = detallemesinmueble;
+	public void setDetallemesinmueble(Set<DetalleMesInmueble> detallesmes) {
+		/*
+		//relacionamos detallemesinmueble con el año
+		detallemesinmueble.forEach(d->{
+			this.addDetallemesinmueble(d);
+		});
+		*/
+		
+		detallesmes.forEach(this::addDetallemesinmueble);
+		//this.detallemesinmueble = detallemesinmueble;
 	}
 	
-	public void setaddDetallemesinmueble(DetalleMesInmueble detallemesinmueble) {
-		this.detallemesinmueble.add(detallemesinmueble);
+	public void addDetallemesinmueble(DetalleMesInmueble detallemesinmueble) {
+		detallemesinmueble.setAnioinmueble(this);
+		this.detallesmes.add(detallemesinmueble);
+	}
+	
+	public void removeDetallemesinmueble(DetalleMesInmueble detallemesinmueble) {
+		this.detallesmes.remove(detallemesinmueble);
+		
 	}
 
+	
 	@Override
-	public String toString() {
-		return "AnioInmueble [id=" + id + ", anio=" + anio + ", mes=" + mes + ", importeSeguroVivienda="
-				+ importeSeguroVivienda + ", importeSeguroImpago=" + importeSeguroImpago + ", docSeguroVivienda="
-				+ docSeguroVivienda + ", docSeguroImpago=" + docSeguroImpago + ", datosAdicionales=" + datosAdicionales
-				+ ", docdatosAdicionales=" + docdatosAdicionales + ", num_meses=" + num_meses + "]";
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof AnioInmueble)) {
+			return false;
+		}
+		AnioInmueble other = (AnioInmueble) obj;
+		return this.id!=null && this.id.equals(other.getId());
 	}
-
-	
 	
 	
 	

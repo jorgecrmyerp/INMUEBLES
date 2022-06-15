@@ -79,8 +79,6 @@ public class DetalleMesInmueble {
 	@JoinColumn(name="inmueble_id")
 	private Inmueble inmueble;
 
-
-
 	public Long getId() {
 		return id;
 	}
@@ -225,17 +223,16 @@ public class DetalleMesInmueble {
 
 
 	@Override
-	public String toString() {
-		return "DetalleMesInmueble [id=" + id + ", mes=" + mes + ", importeAlquiler=" + importeAlquiler
-				+ ", importeComunidad=" + importeComunidad + ", docimporteComunidad=" + docimporteComunidad
-				+ ", importeIbi=" + importeIbi + ", docimporteIbi=" + docimporteIbi + ", gastosAdicionales="
-				+ gastosAdicionales + ", detallegastosadicionales=" + detallegastosadicionales
-				+ ", docgastosadicionales=" + docgastosadicionales + "]";
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof DetalleMesInmueble)) {
+			return false;
+		}
+		DetalleMesInmueble other = (DetalleMesInmueble) obj;
+		return this.id!=null && this.id.equals(other.getId());
 	}
-
-
-
-	
 	
 
 }
