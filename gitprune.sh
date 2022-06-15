@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date) 2022-06-14 paginas html comunes y lista inmuebles"
+message="$(date) 2022-06-15 INICIALIZA ARRAYS EN EL CONSTRUCTOR"
 fi
 
 start=`date +%s`

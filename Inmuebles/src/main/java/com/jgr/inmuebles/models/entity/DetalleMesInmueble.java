@@ -68,12 +68,10 @@ public class DetalleMesInmueble {
 	private String docgastosadicionales;
 	
 	
-	
 	//relacion con anioinmueble
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinColumn(name = "anioinmueble_id")
 	private AnioInmueble anioinmueble;
-	
 	
 	
 	//relacion con inmueble
@@ -86,7 +84,6 @@ public class DetalleMesInmueble {
 	public Long getId() {
 		return id;
 	}
-
 
 
 	public void setId(Long id) {

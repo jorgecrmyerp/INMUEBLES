@@ -1,5 +1,6 @@
 package com.jgr.inmuebles.models.entity;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -71,13 +72,18 @@ public class AnioInmueble {
 	
 	
 	//relacion con inmueble
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="inmueble_id")
 	private Inmueble inmueble;
 	
 	//relacion con detallemes
-	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "anioinmueble", fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "anioinmueble", fetch = FetchType.LAZY)
 	private Set <DetalleMesInmueble> detallemesinmueble;
+
+		
+	public AnioInmueble() {
+		this.detallemesinmueble = new HashSet<>();
+	}
 
 	public Long getId() {
 		return id;
@@ -176,8 +182,6 @@ public class AnioInmueble {
 	}
 	
 	public void setaddDetallemesinmueble(DetalleMesInmueble detallemesinmueble) {
-		
-		if(this.detallemesinmueble==null) {this.detallemesinmueble = new HashSet<DetalleMesInmueble>();}
 		this.detallemesinmueble.add(detallemesinmueble);
 	}
 

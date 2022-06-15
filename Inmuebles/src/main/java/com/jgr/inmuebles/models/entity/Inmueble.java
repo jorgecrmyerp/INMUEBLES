@@ -1,6 +1,7 @@
 package com.jgr.inmuebles.models.entity;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -47,12 +48,17 @@ public class Inmueble {
 	private double importecomprainmueble;
 	
 	//1inmueble-nanios
-	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "inmueble", fetch = FetchType.EAGER)
-	private Set <AnioInmueble> anioinmueble;
+	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "inmueble", fetch = FetchType.LAZY)
+	private Set <AnioInmueble> anioInmueble;
 
 	
-	@OneToMany(mappedBy="inmueble",cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
-	private Set<DetalleMesInmueble> inmuebledetallemes;
+	@OneToMany(mappedBy="inmueble",cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
+	private Set<DetalleMesInmueble> inmuebleDetalleMes;
+
+	public Inmueble() {
+		anioInmueble = new HashSet<>();
+		inmuebleDetalleMes = new HashSet<>();
+	}
 
 
 	public Long getId() {
@@ -96,32 +102,31 @@ public class Inmueble {
 
 
 	public Set<AnioInmueble> getAnioinmueble() {
-		return anioinmueble;
+		return anioInmueble;
 	}
 
 
 	public void setAnioinmueble(Set<AnioInmueble> anioinmueble) {
-		this.anioinmueble = anioinmueble;
+		this.anioInmueble = anioinmueble;
 	}
 	
 	public void setaddAnioinmueble(AnioInmueble anioinmueble) {
-		this.anioinmueble.add(anioinmueble);
-		
+		this.anioInmueble.add(anioinmueble);
 	}
 	
+
 
 	public Set<DetalleMesInmueble> getInmuebledetallemes() {
-		return inmuebledetallemes;
+		return inmuebleDetalleMes;
 	}
 	
 	
-
 	public void setInmuebledetallemes(Set<DetalleMesInmueble> inmuebledetallemes) {
-		this.inmuebledetallemes = inmuebledetallemes;
+		this.inmuebleDetalleMes = inmuebledetallemes;
 	}
 
-	public void setaddInmuebledetallemes(DetalleMesInmueble inmuebledetallemes) {
-		this.inmuebledetallemes.add(inmuebledetallemes);
+	public void addInmuebledetallemes(DetalleMesInmueble inmuebledetallemes) {
+		this.inmuebleDetalleMes.add(inmuebledetallemes);
 	}
 
 
