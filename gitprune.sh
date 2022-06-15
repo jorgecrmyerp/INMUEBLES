@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date) 2022-06-15 MODIFICADO MODELO DATOS"
+message="$(date) 2022-06-15 CREADA PAGINA MODIFICAR"
 fi
 
 start=`date +%s`

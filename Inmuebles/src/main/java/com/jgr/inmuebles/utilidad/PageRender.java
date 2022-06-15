@@ -1,4 +1,4 @@
-package com.jgr.inmuebles.util;
+package com.jgr.inmuebles.utilidad;
 
 import java.util.ArrayList;
 import java.util.List;

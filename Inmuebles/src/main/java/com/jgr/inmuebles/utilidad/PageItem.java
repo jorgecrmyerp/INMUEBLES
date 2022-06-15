@@ -1,4 +1,4 @@
-package com.jgr.inmuebles.util;
+package com.jgr.inmuebles.utilidad;
 
 public class PageItem {
 

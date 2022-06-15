@@ -19,7 +19,7 @@ public interface IinmuebleService {
 	
 	public void deleteById(Long id);
 	
-	public Page<Inmueble> findAllPeliculas(Pageable pageable);
+	public Page<Inmueble> findAllInmuebles(Pageable pageable);
 
 	
 

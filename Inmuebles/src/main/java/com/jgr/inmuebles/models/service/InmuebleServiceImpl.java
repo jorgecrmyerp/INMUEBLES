@@ -43,7 +43,7 @@ public class InmuebleServiceImpl implements IinmuebleService{
 	}
 
 	@Override
-	public Page<Inmueble> findAllPeliculas(Pageable pageable) {
+	public Page<Inmueble> findAllInmuebles(Pageable pageable) {
 		return inmueblesRepository.findAll(pageable);
 	}
 

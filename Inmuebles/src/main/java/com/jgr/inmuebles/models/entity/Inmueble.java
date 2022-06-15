@@ -12,6 +12,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -48,13 +49,23 @@ public class Inmueble {
 	@NotNull
 	private double importecomprainmueble;
 	
+	
+	@Column(name = "datosAdicionales")
+	//@NotEmpty	
+	private String datosAdicionales;
+	
+	@Lob
+	@Column(name = "docdatosAdicionales")
+	private String docdatosAdicionales;
+	
+	
+	
 	//1inmueble-nanios
 	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "inmueble", fetch = FetchType.LAZY)
 	private Set <AnioInmueble> anios;
 
 	public Inmueble() {
-		anios = new HashSet<>();
-		
+		anios = new HashSet<>();		
 	}
 
 
@@ -103,6 +114,29 @@ public class Inmueble {
 	public void setImportecomprainmueble(double importecomprainmueble) {
 		this.importecomprainmueble = importecomprainmueble;
 	}
+
+	
+	
+	
+	public String getDatosAdicionales() {
+		return datosAdicionales;
+	}
+
+
+	public void setDatosAdicionales(String datosAdicionales) {
+		this.datosAdicionales = datosAdicionales;
+	}
+
+
+	public String getDocdatosAdicionales() {
+		return docdatosAdicionales;
+	}
+
+
+	public void setDocdatosAdicionales(String docdatosAdicionales) {
+		this.docdatosAdicionales = docdatosAdicionales;
+	}
+
 
 	public Set<AnioInmueble> getAnios() {
 		return anios;
