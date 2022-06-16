@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date) 2022-06-15 +clases crear backup bbdd y fichero"
+message="$(date) 2022-06-16 ANOTACIONES JSON"
 fi
 
 start=`date +%s`
