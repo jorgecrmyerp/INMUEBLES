@@ -184,7 +184,7 @@ public class AnioInmueble {
 		 * //relacionamos detallemesinmueble con el año detallemesinmueble.forEach(d->{
 		 * this.addDetallemesinmueble(d); });
 		 */
-
+		this.detallesmes.clear();
 		detallesmes.forEach(this::addDetallemesinmueble);
 		// this.detallemesinmueble = detallemesinmueble;
 	}
